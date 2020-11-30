@@ -51,6 +51,7 @@ Public Class aviScreenCapture
     End Sub
     Private Sub appCapture_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         codec = KnownFourCCs.Codecs.MotionJpeg
+
         Dim fileinfo As New FileInfo(Application.StartupPath + "/../../Video/sample.avi")
         aviFileName = fileinfo.FullName
         TextBox1.Text = GetSetting("aviScreenCapture", "duration", "duration", "1")
@@ -66,6 +67,7 @@ Public Class aviScreenCapture
         Dim writer As AviWriter
         Dim videoStream As IAviVideoStream
         writer = New AviWriter(fileName.Text)
+        writer.FramesPerSecond = 30
         videoStream = writer.AddMotionJpegVideoStream(w, h, 70)
         Dim buffer(w * h * 4) As Byte
         Dim bmp = New Bitmap(w, h)
