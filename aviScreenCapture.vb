@@ -52,7 +52,7 @@ Public Class aviScreenCapture
     Private Sub appCapture_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         codec = KnownFourCCs.Codecs.MotionJpeg
 
-        Dim fileinfo As New FileInfo(Application.StartupPath + "/../../Video/sample.avi")
+        Dim fileinfo As New FileInfo(CurDir() + "/../../Video/sample.avi")
         aviFileName = fileinfo.FullName
         TextBox1.Text = GetSetting("aviScreenCapture", "duration", "duration", "1")
         fileName.Text = GetSetting("aviScreenCapture", "filename", "filename", aviFileName)
